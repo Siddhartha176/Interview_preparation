@@ -1,0 +1,195 @@
+Preparing for interviews with difficult SQL queries can be challenging but rewarding. These queries often test your ability to work with complex data structures, perform advanced operations, and optimize for performance. Here are some advanced SQL problems commonly encountered in interviews, along with tips for solving them:
+
+### 1. **Recursive Queries**
+
+**Problem:** Write a recursive SQL query to find all descendants of a given node in a hierarchical table.
+
+**Example Table:**
+```sql
+CREATE TABLE employees (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    manager_id INT,
+    FOREIGN KEY (manager_id) REFERENCES employees(id)
+);
+```
+
+**Query:** Find all descendants of employee with ID 1.
+
+**Solution:**
+```sql
+WITH RECURSIVE employee_hierarchy AS (
+    SELECT id, name, manager_id
+    FROM employees
+    WHERE id = 1
+    UNION ALL
+    SELECT e.id, e.name, e.manager_id
+    FROM employees e
+    INNER JOIN employee_hierarchy eh ON e.manager_id = eh.id
+)
+SELECT * FROM employee_hierarchy;
+```
+
+### 2. **Window Functions**
+
+**Problem:** Write a query to rank employees based on their salary within each department and show the top 3 highest-paid employees per department.
+
+**Example Table:**
+```sql
+CREATE TABLE employees (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    department_id INT,
+    salary DECIMAL(10, 2)
+);
+```
+
+**Query:**
+```sql
+WITH ranked_employees AS (
+    SELECT id, name, department_id, salary,
+           RANK() OVER (PARTITION BY department_id ORDER BY salary DESC) AS rank
+    FROM employees
+)
+SELECT id, name, department_id, salary
+FROM ranked_employees
+WHERE rank <= 3;
+```
+
+### 3. **Complex Joins and Aggregations**
+
+**Problem:** Write a query to find the average order value per customer, considering only those customers who have made more than 5 orders.
+
+**Example Tables:**
+```sql
+CREATE TABLE customers (
+    id INT PRIMARY KEY,
+    name VARCHAR(100)
+);
+
+CREATE TABLE orders (
+    id INT PRIMARY KEY,
+    customer_id INT,
+    order_value DECIMAL(10, 2),
+    FOREIGN KEY (customer_id) REFERENCES customers(id)
+);
+```
+
+**Query:**
+```sql
+WITH customer_order_counts AS (
+    SELECT customer_id, COUNT(*) AS order_count
+    FROM orders
+    GROUP BY customer_id
+    HAVING COUNT(*) > 5
+),
+average_order_values AS (
+    SELECT customer_id, AVG(order_value) AS avg_order_value
+    FROM orders
+    GROUP BY customer_id
+)
+SELECT c.id, c.name, a.avg_order_value
+FROM customers c
+JOIN average_order_values a ON c.id = a.customer_id
+JOIN customer_order_counts coc ON c.id = coc.customer_id;
+```
+
+### 4. **Pivot and Unpivot Operations**
+
+**Problem:** Convert rows to columns to show sales data by month in a pivot table format.
+
+**Example Table:**
+```sql
+CREATE TABLE sales (
+    id INT PRIMARY KEY,
+    sales_month VARCHAR(10),
+    sales_amount DECIMAL(10, 2)
+);
+```
+
+**Query:**
+```sql
+SELECT
+    SUM(CASE WHEN sales_month = 'January' THEN sales_amount ELSE 0 END) AS January,
+    SUM(CASE WHEN sales_month = 'February' THEN sales_amount ELSE 0 END) AS February,
+    SUM(CASE WHEN sales_month = 'March' THEN sales_amount ELSE 0 END) AS March
+FROM sales;
+```
+
+### 5. **Self-Joins and Hierarchical Queries**
+
+**Problem:** Find pairs of employees who work in the same department and earn the same salary.
+
+**Example Table:**
+```sql
+CREATE TABLE employees (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    department_id INT,
+    salary DECIMAL(10, 2)
+);
+```
+
+**Query:**
+```sql
+SELECT e1.name AS employee1, e2.name AS employee2, e1.department_id, e1.salary
+FROM employees e1
+JOIN employees e2 ON e1.department_id = e2.department_id
+                    AND e1.salary = e2.salary
+                    AND e1.id < e2.id;
+```
+
+### 6. **Subqueries and Correlated Subqueries**
+
+**Problem:** Find employees who earn more than the average salary of their department.
+
+**Example Table:**
+```sql
+CREATE TABLE employees (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    department_id INT,
+    salary DECIMAL(10, 2)
+);
+```
+
+**Query:**
+```sql
+SELECT id, name, department_id, salary
+FROM employees e1
+WHERE salary > (
+    SELECT AVG(salary)
+    FROM employees e2
+    WHERE e1.department_id = e2.department_id
+);
+```
+
+### 7. **Handling NULL Values**
+
+**Problem:** Calculate the percentage of employees with missing manager IDs relative to the total number of employees.
+
+**Example Table:**
+```sql
+CREATE TABLE employees (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    manager_id INT
+);
+```
+
+**Query:**
+```sql
+SELECT 
+    (COUNT(*) FILTER (WHERE manager_id IS NULL) * 100.0 / COUNT(*)) AS missing_manager_percentage
+FROM employees;
+```
+
+### Tips for Solving Difficult SQL Problems:
+
+1. **Understand the Data Model:** Before writing queries, make sure you understand the schema and relationships between tables.
+2. **Break Down the Problem:** Divide complex queries into smaller parts. Use CTEs or intermediate steps to simplify.
+3. **Optimize for Performance:** Be aware of potential performance issues. Use indexes, avoid unnecessary joins, and consider the efficiency of your query.
+4. **Test Incrementally:** Test each part of your query separately to ensure it works as expected before combining them.
+5. **Read SQL Documentation:** Familiarize yourself with SQL functions and features relevant to the problem you're solving.
+
+Feel free to ask if you have specific problems or need further details on any of these queries!
