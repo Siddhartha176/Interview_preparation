@@ -1,0 +1,1 @@
+Big Query  key concepts
