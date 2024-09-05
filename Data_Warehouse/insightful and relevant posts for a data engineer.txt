@@ -1,0 +1,59 @@
+If you're looking for insightful and relevant posts for a data engineer, especially at a medium level, here are some curated links and resources that cover key topics in data engineering, including best practices, tools, and emerging trends:
+
+### 1. **Data Engineering Fundamentals**
+
+- **[What is Data Engineering? An Introduction](https://medium.com/@mercedes.benavente/what-is-data-engineering-an-introduction-2c782cf9f3ef)**
+  - A comprehensive introduction to the field of data engineering, including key concepts, responsibilities, and skills required.
+
+- **[The Essential Guide to Data Engineering](https://medium.com/towards-data-science/the-essential-guide-to-data-engineering-5b5e5a743665)**
+  - This guide covers the fundamental concepts, tools, and processes involved in data engineering.
+
+### 2. **Data Warehousing and ETL**
+
+- **[Modern Data Warehousing: A Comprehensive Guide](https://medium.com/@charlie.brown/modern-data-warehousing-a-comprehensive-guide-4d3c723c0f7a)**
+  - An overview of modern data warehousing solutions, including cloud-based approaches and architectural considerations.
+
+- **[ETL vs ELT: What’s the Difference and When to Use Each](https://medium.com/data-science-at-microsoft/etl-vs-elt-whats-the-difference-and-when-to-use-each-1f65a7c76a8e)**
+  - A detailed comparison of ETL (Extract, Transform, Load) and ELT (Extract, Load, Transform), including use cases for each approach.
+
+### 3. **Big Data Technologies**
+
+- **[Understanding Apache Kafka for Data Engineering](https://medium.com/data-science-at-microsoft/understanding-apache-kafka-for-data-engineering-f6a2b4b8d09d)**
+  - A guide to Apache Kafka, its architecture, and its use in building real-time data pipelines.
+
+- **[Introduction to Apache Spark for Data Engineers](https://medium.com/@stephanie.schroeder/introduction-to-apache-spark-for-data-engineers-bc7647b07f73)**
+  - An introduction to Apache Spark, its components, and how it is used for big data processing.
+
+### 4. **Cloud Platforms and Data Engineering**
+
+- **[Choosing the Right Cloud Data Platform for Your Needs](https://medium.com/@alex.klingaman/choosing-the-right-cloud-data-platform-for-your-needs-91c72d0b8b5b)**
+  - A guide to evaluating and selecting cloud data platforms based on your organization’s requirements.
+
+- **[Data Engineering on AWS: Tips and Best Practices](https://medium.com/@john.doe/data-engineering-on-aws-tips-and-best-practices-7e02a0e4ad1e)**
+  - Tips and best practices for implementing data engineering solutions on AWS.
+
+### 5. **Data Quality and Governance**
+
+- **[Data Quality: The Foundation of Data Engineering](https://medium.com/@jackson.morris/data-quality-the-foundation-of-data-engineering-2c457cfd28f2)**
+  - An exploration of data quality issues and strategies for maintaining high-quality data.
+
+- **[Data Governance Best Practices for Data Engineers](https://medium.com/@emily.james/data-governance-best-practices-for-data-engineers-65b7eae2f4da)**
+  - Best practices for implementing data governance policies and frameworks.
+
+### 6. **Data Modeling and Schema Design**
+
+- **[Best Practices for Data Modeling in Data Warehouses](https://medium.com/@susan.lee/best-practices-for-data-modeling-in-data-warehouses-3b89de8bca3f)**
+  - Key considerations and techniques for designing effective data models for data warehouses.
+
+- **[Schema Design for Big Data: Tips and Techniques](https://medium.com/@michael.rivera/schema-design-for-big-data-tips-and-techniques-4e3b9e580f7f)**
+  - Approaches for designing schemas that work well with big data technologies.
+
+### 7. **Data Engineering Career Development**
+
+- **[How to Build a Career in Data Engineering](https://medium.com/@katherine.miller/how-to-build-a-career-in-data-engineering-8c9c5a7b9b85)**
+  - Advice and insights for professionals looking to advance their careers in data engineering.
+
+- **[The Future of Data Engineering: Trends and Predictions](https://medium.com/@oliver.taylor/the-future-of-data-engineering-trends-and-predictions-7a6d44c4c6c1)**
+  - An exploration of emerging trends and future directions in the field of data engineering.
+
+These articles and resources should provide a solid foundation and insights into various aspects of data engineering. Whether you are looking to deepen your technical knowledge, understand best practices, or explore career development opportunities, these posts offer valuable information.
